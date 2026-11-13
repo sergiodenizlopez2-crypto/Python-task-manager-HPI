@@ -1,0 +1,52 @@
+def delete_task(tasks):
+    print("\n--- DELETE TASK ---")
+
+    # Base case: Check if there are any tasks
+    if not tasks:
+        print("There are no tasks remaining.")
+        print("All tasks have been deleted!")
+        return tasks
+
+    # Display all available tasks
+    print("\nYour current tasks:")
+    for i, task in enumerate(tasks):
+        print(f"{i + 1}. {task['name']} - {task['deadline']}")
+
+    # Ask the owner which task to delete
+    try:
+        task_number = int(input("\nEnter the number of the task to delete: "))
+
+        # Check if the selected number is valid
+        if task_number < 1 or task_number > len(tasks):
+            print("Invalid task number. Please try again.")
+            return delete_task(tasks)
+
+        # Get the selected task
+        deleted_task = tasks[task_number - 1]
+
+        # Remove the task from the list
+        tasks.pop(task_number - 1)
+
+        # Notify the owner
+        print("\nTask successfully deleted!")
+        print(f"Notification: The task '{deleted_task['name']}'")
+        print("has been permanently removed from your task list.")
+
+        # Display the updated task list
+        print("\n--- UPDATED TASK LIST ---")
+
+        for i, task in enumerate(tasks):
+            status = "Completed" if task["completed"] else "Pending"
+            print(f"{i + 1}. {task['name']} - {task['deadline']} - {status}")
+
+        # Recursive call: Execute the function again
+        print("\nReturning to the delete menu...")
+        return delete_task(tasks)
+
+    except ValueError:
+        print("Error: Please enter a valid number.")
+        return delete_task(tasks)
+
+
+# Start the recursive function
+delete_task(tasks)
