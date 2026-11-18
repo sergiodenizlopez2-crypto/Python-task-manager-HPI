@@ -23,11 +23,3 @@ def complete_task(tasks):
     else:
         task["completed"] = True
         print("Task", task["name"], "marked as completed!")
-
-
-# Test
-tasks = [
-    {"name": "Math exam", "deadline": "20-11-2026", "completed": False},
-    {"name": "History essay", "deadline": "25-11-2026", "completed": False},
-]
-complete_task(tasks)
