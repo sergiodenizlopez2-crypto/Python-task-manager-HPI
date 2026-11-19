@@ -1,0 +1,13 @@
+def add_task(tasks):
+    
+    title = input("Enter the task title: ")
+    deadline = input("Enter the deadline (ej. YYYY-MM-DD): ")
+    
+    new_task = {
+        "title": title,
+        "deadline": deadline,
+        "completed": False
+    }
+    
+    tasks.append(new_task)
+    print(f"¡Task '{title}' added successfully!")
